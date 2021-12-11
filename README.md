@@ -1,2 +1,2 @@
 # webhook_jenkins
-first build with sonarqube scanner
+first build with sonarqube scanners
