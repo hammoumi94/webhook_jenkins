@@ -1,11 +1,11 @@
 node {
      stage('Clone sources') {
-           git url: 'https://github.com/hammoumi94/webhook_jenkins.git'
+           git 'https://github.com/hammoumi94/webhook_jenkins.git'
         }
      stage('SonarQube analysis') {
 	   def scannerHome = tool 'sonarqubetest'
 	        withSonarQubeEnv('sonar'){
-	               sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.projectName=project2 -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=sonarqubetest  -Dsonar.sources=./ -Dsonar.language=java -Dsonar.java.binaries=."
+	               sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.projectName=sonarqubetest -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=sonarqubetest  -Dsonar.sources=./ -Dsonar.language=java -Dsonar.java.binaries=."
 	        }
 	    }
 	
