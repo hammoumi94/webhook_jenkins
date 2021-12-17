@@ -2,6 +2,12 @@ node {
      stage('Clone sources') {
            git 'https://github.com/hammoumi94/webhook_jenkins.git'
         }
+     stage('Build') {
+           sh label: '', script: 'javac Main.java'
+                }
+     stage('Run') {
+           sh label: '', script: 'java Main'
+                }
      stage('SonarQube analysis') {
 	   def scannerHome = tool 'sonarqubetest'
 	        withSonarQubeEnv('sonar'){
@@ -15,12 +21,5 @@ node {
 	                error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
 	        }
 	    }
-
-     stage('Build') {
-	   sh label: '', script: 'javac Main.java'
-		}
-     stage('Run') {
-	   sh label: '', script: 'java Main'	
-	        }
 
 }
