@@ -9,7 +9,7 @@ node {
            sh label: '', script: 'java Main'
                 }
      stage('SonarQube analysis') {
-	   def scannerHome = tool 'sonarqubetest'
+	   def scannerHome = tool 'Production-SonarQubeScanner'
 	        withSonarQubeEnv('sonar'){
 	               sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.projectName=sonarqubetest -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=sonarqubetest  -Dsonar.sources=./ -Dsonar.language=java -Dsonar.java.binaries=."
 	        }
