@@ -1,7 +1,4 @@
 node {
-     stage('Clone sources') {
-           git 'https://github.com/hammoumi94/webhook_jenkins.git'
-        }
      stage('Build') {
            sh label: '', script: 'javac Main.java'
                 }
